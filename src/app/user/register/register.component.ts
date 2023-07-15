@@ -51,5 +51,4 @@ export class RegisterComponent {
     this.alertMessage = 'Please wait! Your account is being created.';
     this.alertColor = 'blue';
   }
-
 }
