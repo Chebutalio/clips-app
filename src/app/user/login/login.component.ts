@@ -7,6 +7,8 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  public loginForm: FormGroup | null = null;
+
   public email = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -17,10 +19,13 @@ export class LoginComponent {
     Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
   ]);
 
-  public loginForm = new FormGroup({
-    email: this.email,
-    password: this.password,
-  });
+  constructor() {
+    this.loginForm = new FormGroup({
+      email: this.email,
+      password: this.password,
+    });
+  }
+
   public isSubmitted: boolean = false;
 
   public login(): void {

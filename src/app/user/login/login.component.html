@@ -1,10 +1,9 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+<form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="login()">
   <!-- Email -->
   <div class="mb-3">
     <label class="inline-block mb-2">Email</label>
     <app-input
       [control]="email"
-      [controlName]="'email'"
       type="email"
       placeholder="Enter Email"
     ></app-input>
@@ -14,7 +13,6 @@
     <label class="inline-block mb-2">Password</label>
     <app-input
       [control]="password"
-      [controlName]="'password'"
       type="password"
       placeholder="Enter Password"
     ></app-input>

@@ -7,6 +7,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  public registerForm: FormGroup | null = null;
+
   public name =  new FormControl('', [
     Validators.required,
     Validators.minLength(3),
@@ -33,14 +35,16 @@ export class RegisterComponent {
     Validators.maxLength(10),
   ]);
 
-  public registerForm = new FormGroup({
-    name: this.name,
-    email: this.email,
-    age: this.age,
-    password: this.password,
-    confirmPassword: this.confirmPassword,
-    phoneNumber: this.phoneNumber,
-  });
+  constructor() {
+    this.registerForm = new FormGroup({
+      name: this.name,
+      email: this.email,
+      age: this.age,
+      password: this.password,
+      confirmPassword: this.confirmPassword,
+      phoneNumber: this.phoneNumber,
+    });
+  }
 
   public isSubmitted: boolean = false;
   public alertMessage: string = 'Please wait! Your account is being created.';
