@@ -8,7 +8,7 @@ import {AbstractControl, FormControl} from "@angular/forms";
 })
 export class InputComponent {
   @Input() control!: AbstractControl;
-  @Input() controlName: string = '';
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
+  @Input() validationType: string = '';
 }
