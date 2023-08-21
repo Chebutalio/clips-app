@@ -12,20 +12,11 @@ import IUser from "../../shared/interfaces/user.interface";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(
-    private auth: AuthService,
-  ) {
-    this.registerForm = new FormGroup({
-      name: this.name,
-      email: this.email,
-      age: this.age,
-      password: this.password,
-      confirmPassword: this.confirmPassword,
-      phoneNumber: this.phoneNumber,
-    });
-  }
   public registerForm: FormGroup | null = null;
   public inSubmission: boolean = false;
+  public isSubmitted: boolean = false;
+  public alertMessage: string = 'Please wait! Your account is being created.';
+  public alertColor: string = 'blue';
 
   public name =  new FormControl('', [
     Validators.required,
@@ -53,9 +44,18 @@ export class RegisterComponent {
     Validators.maxLength(10),
   ]);
 
-  public isSubmitted: boolean = false;
-  public alertMessage: string = 'Please wait! Your account is being created.';
-  public alertColor: string = 'blue';
+  constructor(
+    private auth: AuthService,
+  ) {
+    this.registerForm = new FormGroup({
+      name: this.name,
+      email: this.email,
+      age: this.age,
+      password: this.password,
+      confirmPassword: this.confirmPassword,
+      phoneNumber: this.phoneNumber,
+    });
+  }
 
   public async register() {
     if (this.registerForm) {
@@ -67,7 +67,7 @@ export class RegisterComponent {
       try {
         await this.auth.createUser(this.registerForm.value as IUser);
       } catch(error) {
-        console.log(error);
+        console.error(error);
 
         this.alertMessage = 'An unexpected error occurred. Please try again later.';
         this.alertColor = 'red';
