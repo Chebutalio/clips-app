@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { AuthService } from "../../services/auth.service";
+import { RegisterValidators } from "../validators/register-validators";
+import { EmailTaken } from "../validators/email-taken";
 
 import IUser from "../../shared/interfaces/user.interface";
 
@@ -25,6 +27,9 @@ export class RegisterComponent {
   public email = new FormControl('', [
     Validators.required,
     Validators.email,
+  ],
+    [
+      this.emailTaken.validate,
   ]);
   public age =  new FormControl<number | null>(null, [
     Validators.required,
@@ -46,6 +51,7 @@ export class RegisterComponent {
 
   constructor(
     private auth: AuthService,
+    private emailTaken: EmailTaken,
   ) {
     this.registerForm = new FormGroup({
       name: this.name,
@@ -54,7 +60,8 @@ export class RegisterComponent {
       password: this.password,
       confirmPassword: this.confirmPassword,
       phoneNumber: this.phoneNumber,
-    });
+    },
+      [RegisterValidators.match('password', 'confirmPassword')]);
   }
 
   public async register() {
