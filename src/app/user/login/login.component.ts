@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 
 @Component({

@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from "./user/user.module";
 import { NavigationComponent } from './navigation/navigation.component';
+
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
-import { environment } from "../environments/environment";
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
