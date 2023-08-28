@@ -14,5 +14,4 @@ export class EmailTaken implements AsyncValidator {
       response => response.length ? { emailTaken: true } : null,
     );
   }
-
 }
