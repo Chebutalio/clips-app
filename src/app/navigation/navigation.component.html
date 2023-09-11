@@ -23,6 +23,7 @@
               routerLink="/manage"
               routerLinkActive="text-indigo-400"
               [routerLinkActiveOptions]="{ exact: true }"
+              [queryParams]="{ sort: '1' }"
             >
               Manage
             </a>
@@ -30,8 +31,9 @@
           <li>
             <a
               class="px-2"
-              routerLink="/"
+              routerLink="/upload"
               routerLinkActive="text-indigo-400"
+              [routerLinkActiveOptions]="{ exact: true }"
             >
               Upload
             </a>
@@ -40,7 +42,7 @@
             <a
               class="px-2"
               href="#"
-              (click)="logout($event)"
+              (click)="auth.logout($event)"
             >
               Logout
             </a>
